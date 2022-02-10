@@ -15,9 +15,20 @@ class ProcedureSerializer(serializers.ModelSerializer):
     en_title = serializers.CharField(max_length=255)
     de_title = serializers.CharField(max_length=255)
     ru_title = serializers.CharField(max_length=255)
-    price = serializers.FloatField()
-    sex = serializers.CharField(max_length=255)
+    price_women = serializers.FloatField()
+    price_men = serializers.FloatField()
 
     class Meta:
         model = Procedure
+        fields =  '__all__'
+class ContactSerializer(serializers.ModelSerializer):
+    phone_number = serializers.CharField(max_length=255)
+    map_position = serializers.CharField(max_length=255)
+    email = serializers.CharField(max_length=255)
+    site = serializers.CharField(max_length=255)
+    facebook_link = serializers.CharField(max_length=255)
+    instagram_link = serializers.CharField(max_length=255)
+
+    class Meta:
+        model = Contacts
         fields =  '__all__'

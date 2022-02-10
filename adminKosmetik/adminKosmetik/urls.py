@@ -15,7 +15,7 @@ Including another URLconf
 """
 import document as document
 from rest_framework import routers
-from .views_api import CategoryProcedureListAPIView, ProcedureListAPIView
+from .views_api import CategoryProcedureListAPIView, ProcedureListAPIView, ContactListAPIView
 from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
@@ -24,6 +24,8 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.register(r'categories_procedures', CategoryProcedureListAPIView)
 router.register(r'procedures', ProcedureListAPIView)
+router.register(r'contacts', ContactListAPIView)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),

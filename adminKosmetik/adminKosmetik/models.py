@@ -4,8 +4,8 @@ from django.db import models
 
 
 class CategoryProcedure(models.Model):
-    en_title = models.CharField(max_length=255, verbose_name="Titel (DEU)")
-    de_title = models.CharField(max_length=255, verbose_name="Title (ENG)")
+    de_title = models.CharField(max_length=255, verbose_name="Titel (DEU)")
+    en_title = models.CharField(max_length=255, verbose_name="Title (ENG)")
     ru_title = models.CharField(max_length=255, verbose_name="Название (RUS)")
     icon = models.ImageField(upload_to='icons', verbose_name="Icon")
     def __str__(self):
@@ -23,11 +23,11 @@ class Procedure(models.Model):
         ('M', 'Male'),
     )
     category = models.ForeignKey('CategoryProcedure',verbose_name="Category",null="True", on_delete=models.PROTECT)
-    en_title = models.CharField(max_length=255, verbose_name="Titel (DEU)")
-    de_title = models.CharField(max_length=255, verbose_name="Title (ENG)")
+    de_title = models.CharField(max_length=255, verbose_name="Titel (DEU)")
+    en_title = models.CharField(max_length=255, verbose_name="Title (ENG)")
     ru_title = models.CharField(max_length=255, verbose_name="Название (RUS)")
-    price = models.FloatField(verbose_name="Price €")
-    sex = models.CharField( max_length=255,choices=sexs,default="Male",verbose_name="Sex")
+    price_women = models.FloatField(verbose_name="Price for women €")
+    price_men = models.FloatField(verbose_name="Price for men €")
 
     def __str__(self):
         return self.en_title
@@ -36,3 +36,17 @@ class Procedure(models.Model):
         verbose_name_plural = "Процедуры"
         managed = False
         db_table = 'tbl_procedures'
+
+class Contacts(models.Model):
+    phone_number = models.CharField(max_length=255, verbose_name="Phone")
+    map_position = models.CharField(max_length=255, verbose_name="Address")
+    email = models.CharField(max_length=255, verbose_name="E-mail")
+    site = models.CharField(max_length=255, verbose_name="Site")
+    facebook_link = models.CharField(max_length=255, verbose_name="Facebook")
+    instagram_link = models.CharField(max_length=255, verbose_name="Instagram")
+
+    class Meta:
+        verbose_name = "Контакт"
+        verbose_name_plural = "Контакты"
+        managed = False
+        db_table = 'tbl_contacts'
