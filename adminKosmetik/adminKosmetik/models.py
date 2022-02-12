@@ -8,6 +8,8 @@ class CategoryProcedure(models.Model):
     en_title = models.CharField(max_length=255, verbose_name="Title (ENG)")
     ru_title = models.CharField(max_length=255, verbose_name="Название (RUS)")
     icon = models.ImageField(upload_to='icons', verbose_name="Icon")
+    picture = models.ImageField(upload_to='category_pictures', verbose_name="Picture")
+
     def __str__(self):
         return self.en_title
 
@@ -50,3 +52,21 @@ class Contacts(models.Model):
         verbose_name_plural = "Контакты"
         managed = False
         db_table = 'tbl_contacts'
+
+class Requests(models.Model):
+    category_name = models.CharField(max_length=255, verbose_name="Category")
+    procedure_name = models.CharField(max_length=255, verbose_name="Procedure")
+    sex = models.CharField(max_length=255, verbose_name="Sex")
+    price = models.CharField(max_length=255, verbose_name="Price")
+    first_name = models.CharField(max_length=255, verbose_name="First name")
+    last_name = models.CharField(max_length=255, verbose_name="Last name")
+    email = models.CharField(max_length=255, verbose_name="Email")
+    phone = models.CharField(max_length=255, verbose_name="Phone")
+    time = models.CharField(max_length=255, verbose_name="Time")
+    time_create = models.DateTimeField(auto_now_add=True,  verbose_name="Time created")
+
+    class Meta:
+        verbose_name = "Запись"
+        verbose_name_plural = "Записи"
+        managed = False
+        db_table = 'tbl_requests'
